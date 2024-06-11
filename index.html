@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, orientation=landscape">
+        <title>maaf</title>
+        <style>
+            body{
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                background-color:black;
+            }
+            
+            #kata{
+                width:90px;
+                height:90px
+                margin:0 auto;
+                text-align:center;
+                background-color:transparent;
+                border:3px solid blue;
+                position:absolute;
+                white-space:nowrap;
+                animation:ll 2s linear infinite;
+                
+            }
+            @keyframes ll{
+                0%{
+                    border:3px solid blue;
+                }
+                25%{
+                    border:1px solid red;
+                }
+                50%{
+                    border:3px solid green;
+                }
+                75%{
+                    border:1px solid blue;
+                }
+                100%{
+                    border:3px solid blue;
+                }
+            }
+            
+        .meteor {
+            position: absolute;
+            width: 8px;
+            height: 4px;
+            background: linear-gradient(to bottom, white, transparent);
+            opacity: 0.8;
+            box-shadow:0 0 2em silver;
+            transform: rotate(45deg);
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(45deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) translateX(100vw) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
+        </style>
+    </head>
+    <body>
+        <div id="kata" style="color:silver">maafin yaa</div>
+    </body>
+    <script>
+        function createMeteor() {
+            const meteor = document.createElement('div');
+            meteor.classList.add('meteor');
+            document.body.appendChild(meteor);
+
+            // Randomize start position
+            meteor.style.left = Math.random() * 200 + 'vw';
+            meteor.style.top = -Math.random() * 50 + 'px';
+
+            // Set random animation duration
+            const duration = Math.random() * 1 + 1; // between 2s and 4s
+            meteor.style.animationDuration = duration + 's';
+
+            // Remove the meteor after animation ends
+            meteor.addEventListener('animationend', () => {
+                meteor.remove();
+            });
+        }
+
+        // Create meteors at intervals
+        setInterval(createMeteor, 50);
+    </script>
+</html>
